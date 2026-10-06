@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Numerical Linear Algebra of Large Language Models</title>
+<meta name="description" content="A survey by Abdelkader Baggag and Yousef Saad examining large language models through the lens of numerical linear algebra, including Transformers, high-dimensional geometry, low-rank methods, randomization, compression, and advanced optimization.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Numerical Linear Algebra of Large Language Models">
+<meta property="og:description" content="A survey by Abdelkader Baggag and Yousef Saad examining large language models through the lens of numerical linear algebra.">
+<meta property="og:url" content="https://abdelkader-baggag.github.io/LinearAlgebra4LLMs/">
+<meta property="og:image" content="https://abdelkader-baggag.github.io/LinearAlgebra4LLMs/assets/nla-llms-overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav><div class="container">
+<a class="brand" href="#top">NLA × LLMs</a>
+<ul>
+<li><a href="#overview">Overview</a></li><li><a href="#paper">Paper</a></li><li><a href="#nla">NLA for LLMs</a></li><li><a href="#resources">Resources</a></li><li><a href="#citation">Citation</a></li><li><a href="#updates">Updates</a></li>
+</ul></div></nav>
+<main id="top">
+<header class="hero container">
+<h1>The Numerical Linear Algebra of Large Language Models</h1>
+<p class="authors"><a href="https://arxiv.org/a/baggag_a_1">Abdelkader Baggag</a> · <a href="https://arxiv.org/a/saad_y_1">Yousef Saad</a></p>
+<p class="affil"><span>Qatar Computing Research Institute (QCRI), Hamad Bin Khalifa University (HBKU)</span><span>Department of Computer Science and Engineering, University of Minnesota</span></p>
+<div class="btns">
+<a class="btn btn-primary" href="https://arxiv.org/abs/2610.04631">arXiv</a>
+<a class="btn" href="https://arxiv.org/pdf/2610.04631">PDF</a>
+<a class="btn" href="#citation">BibTeX</a>
+</div>
+<figure>
+<a href="assets/nla-llms-overview.png"><img src="assets/nla-llms-overview.png" alt="Six selected numerical linear algebra ideas and their connections to modern large language models, including linearized attention, Muon optimization, low-rank approximation, attention as kernel regression, backpropagation, and high-dimensional geometry."></a>
+<figcaption>Six selected numerical linear algebra ideas that reappear in modern LLMs.</figcaption>
+</figure>
+</header>
+
+<div class="container">
+<section id="overview"><div class="prose">
+<h2>Overview</h2>
+<p>The Numerical Linear Algebra of Large Language Models examines modern large language models from a numerical linear algebra perspective. The paper has two main goals: to explain the key concepts behind LLMs in a form accessible to specialists in numerical methods, and to examine the numerical linear algebra ideas that appear throughout modern LLM techniques.</p>
+<p>Starting from deep neural networks and Transformer architectures, the survey develops connections to high-dimensional representation geometry, intrinsic dimension, interpretability, low-rank and spectral structure, randomization, model compression, and matrix-based optimization. The broader perspective is that many important components of modern AI can be understood through matrices, tensors, operators, projections, and structured numerical methods.</p>
+</div></section>
+
+<section id="paper">
+<h2>What the Paper Covers</h2>
+<p class="prose">The survey develops the subject from neural-network and Transformer foundations to representation geometry, structured approximations, and modern matrix-based optimization.</p>
+<div class="paper-grid">
+<article class="card card-1"><h3>Foundations</h3><ul><li>AI and deep-learning foundations</li><li>Multilayer perceptrons and loss functions</li><li>Stochastic optimization</li><li>Computational graphs and backpropagation</li><li>Matrix and tensor computations</li></ul></article>
+<article class="card card-2"><h3>LLMs and Transformers</h3><ul><li>Language modeling, tokens, and embeddings</li><li>Self-attention and multi-head attention</li><li>Positional representations</li><li>Feed-forward layers, normalization, and residual connections</li><li>Decoder-only LLMs and Mixture-of-Experts</li><li>Training and fine-tuning</li></ul></article>
+<article class="card card-3"><h3>Geometry, Structure &amp; Interpretability</h3><ul><li>High-dimensional representation geometry</li><li>Johnson–Lindenstrauss and near-orthogonality</li><li>Intrinsic dimension and low-dimensional structure</li><li>Interpretability through linear algebra</li><li>Scaling laws and emergent phenomena</li></ul></article>
+<article class="card card-4"><h3>Spectral &amp; Efficient Methods</h3><ul><li>Model compression</li><li>Low-rank structure and LoRA</li><li>Linearized and efficient attention</li><li>Randomization and random projections</li></ul></article>
+<article class="card card-5"><h3>Advanced Optimization</h3><ul><li>Natural gradients</li><li>Fisher and Gauss–Newton structure</li><li>K-FAC</li><li>Shampoo</li><li>Muon and Newton–Schulz iterations</li></ul></article>
+</div></section>
+
+<section id="nla">
+<h2>Numerical Linear Algebra for LLMs</h2>
+<p class="prose">Numerical linear algebra enters LLMs at several levels. Matrix and tensor operations provide the computational language of deep learning and Transformers, while numerical methods provide ways to exploit structure for training and inference. Backpropagation itself reduces to sequences of matrix operations, and low-rank approximations and structured tensor computations are repeatedly used to reduce computational and memory costs.</p>
+<div class="features">
+<div class="feature"><h3>Representations and Geometry</h3><p>LLMs operate in high-dimensional spaces, but their representations and useful parameter updates often exhibit lower-dimensional structure. This connects high-dimensional geometry, Johnson–Lindenstrauss ideas, intrinsic dimension, low-rank subspaces, and representation analysis. Linear algebra also provides explicit objects for interpretability: attention matrices, residual-stream decompositions, projections, and subspaces.</p></div>
+<div class="feature"><h3>Efficiency, Adaptation, and Optimization</h3><p>Low-rank approximations support model compression and parameter-efficient adaptation; randomized projections and structured approximations can reduce the cost of attention; and matrix-based preconditioning provides the foundation for optimization methods such as K-FAC, Shampoo, and Muon. In Muon, for example, a Newton–Schulz polynomial iteration is used to approximate a polar factor of the momentum matrix.</p></div>
+</div></section>
+
+<section id="resources">
+<h2>Resources</h2>
+<div class="resources">
+<a class="res" href="https://arxiv.org/abs/2610.04631"><strong>arXiv</strong><span>arXiv:2610.04631</span></a>
+<a class="res" href="https://arxiv.org/pdf/2610.04631"><strong>PDF</strong><span>Download the paper</span></a>
+<a class="res" href="#citation"><strong>BibTeX</strong><span>Jump to citation</span></a>
+</div>
+<p class="note">Additional resources and updates will be added as the project develops.</p>
+</section>
+
+<section id="citation"><div class="prose">
+<h2>Citation</h2>
+<p>If you use this work, please cite:</p>
+<div class="codebox"><button id="copy-bib" type="button">Copy BibTeX</button>
+<pre id="bibtex">@article{baggag2026numerical,
+  title   = {The Numerical Linear Algebra of Large Language Models},
+  author  = {Baggag, Abdelkader and Saad, Yousef},
+  journal = {arXiv preprint arXiv:2610.04631},
+  year    = {2026}
+}</pre></div>
+<p class="small">arXiv: 2610.04631</p>
+</div></section>
+
+<section id="updates"><div class="prose">
+<h2>Updates</h2>
+<div class="update"><time>October 2026</time>Initial arXiv release of The Numerical Linear Algebra of Large Language Models — arXiv:2610.04631.</div>
+</div></section>
+</div>
+</main>
+<footer><div class="container">
+<p>The Numerical Linear Algebra of Large Language Models</p>
+<p>Abdelkader Baggag · Yousef Saad</p>
+<p>Last updated: October 2026</p>
+</div></footer>
+<script src="script.js"></script>
+</body>
+</html>
