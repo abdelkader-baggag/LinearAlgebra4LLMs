@@ -58,3 +58,10 @@ footer p{margin:0 0 4px}
 @media(max-width:1099px){h1{font-size:42px}.paper-grid{grid-template-columns:repeat(2,1fr)}.card,.card-4,.card-5{grid-column:auto}.card-5{grid-column:1/-1}}
 @media(max-width:699px){h1{font-size:36px}section{padding-top:70px}.paper-grid,.features{grid-template-columns:1fr}.card-5{grid-column:auto}.container{padding:0 20px}body{font-size:16px}.authors{font-size:19px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+#overview figure{margin:0 auto 36px}
+
+/* Alignment fix: center the reading column under the centered hero/figure */
+.prose{margin-left:auto;margin-right:auto}
+section>h2,.resources,.note,.features{max-width:980px;margin-left:auto;margin-right:auto}
+section>h2,.prose{max-width:860px}
+.paper-grid{max-width:1180px;margin-left:auto;margin-right:auto}
