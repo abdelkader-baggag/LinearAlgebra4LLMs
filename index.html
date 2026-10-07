@@ -45,6 +45,7 @@ h3{margin:0}
 .cx.o{--c:var(--orange)}.cx.b{--c:var(--blue)}.cx.g{--c:var(--green)}
 .cx h3{font-size:14px;color:var(--c);line-height:1.3}
 .cx .src{font-size:12px;color:var(--muted);margin:3px 0 10px}
+.op{font-style:normal;margin-right:.15em}
 .math{font-family:"Times New Roman",Times,serif;font-style:italic;font-size:16px;margin-bottom:10px;line-height:1.4}
 .cx p{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 12px}
 .cx .sec{font-size:11.5px;color:var(--muted);margin-top:auto}
@@ -108,7 +109,7 @@ footer{margin-top:56px;padding:26px 0 40px;text-align:center;font-size:12px;colo
 <p class="lead">Six selected connections between familiar LLM mechanisms and results from numerical linear algebra and related mathematics.</p>
 <div class="grid g3">
 <article class="cx o"><h3>Linearized attention</h3><div class="src">Cayley (1858) · associativity of matrix products</div><div class="math">(<b>QK</b><sup>⊤</sup>)<b>V</b> = <b>Q</b>(<b>K</b><sup>⊤</sup><b>V</b>)</div><p>Without the softmax, regrouping one product avoids the <i>n</i> × <i>n</i> matrix: cost <i>O</i>(<i>n</i>²<i>d</i>) → <i>O</i>(<i>nd</i>²).</p><div class="sec">§4.3–4.4</div></article>
-<article class="cx b"><h3>Kernel regression view</h3><div class="src">Nadaraya–Watson (1964)</div><div class="math">softmax(<b>QK</b><sup>⊤</sup>/√<i>d<sub>k</sub></i>)<b>V</b></div><p>Each output row is a similarity-weighted average of value vectors; the attention matrix is row-stochastic.</p><div class="sec">§2.8, §3.4</div></article>
+<article class="cx b"><h3>Kernel regression view</h3><div class="src">Nadaraya–Watson (1964)</div><div class="math"><span class="op">softmax</span>(<b>QK</b><sup>⊤</sup>/√<i>d<sub>k</sub></i>)<b>V</b></div><p>Each output row is a similarity-weighted average of value vectors; the attention matrix is row-stochastic.</p><div class="sec">§2.8, §3.4</div></article>
 <article class="cx o"><h3>Low-rank structure: LoRA &amp; compression</h3><div class="src">Eckart–Young (1936)</div><div class="math"><b>W</b><sub>r</sub> = <b>U</b><sub>r</sub><b>Σ</b><sub>r</sub><b>V</b><sub>r</sub><sup>⊤</sup>, &nbsp;<b>W</b> = <b>W</b><sub>0</sub> + <b>AB</b></div><p>Truncated SVD gives the best rank-<i>r</i> approximation; LoRA learns a low-rank update with <i>r</i> ≪ <i>d</i>.</p><div class="sec">§4.1–4.2</div></article>
 <article class="cx o"><h3>Representation geometry</h3><div class="src">Johnson–Lindenstrauss (1984)</div><div class="math">‖<i>ϕ</i>(<b>u</b>) − <i>ϕ</i>(<b>v</b>)‖ ≈ ‖<b>u</b> − <b>v</b>‖</div><p>Distance preservation and near-orthogonality in high dimensions; intrinsic dimension of hidden states.</p><div class="sec">§3.14–3.15</div></article>
 <article class="cx g"><h3>Backpropagation</h3><div class="src">Linnainmaa (1970) · reverse-mode differentiation</div><div class="math"><b>J</b><sub>ℓ</sub> = ∂<b>s</b><sub>ℓ</sub>/∂<b>s</b><sub>ℓ−1</sub>, &nbsp;<b>δ</b><sub>ℓ−1</sub> = <b>J</b><sub>ℓ</sub><sup>⊤</sup><b>δ</b><sub>ℓ</sub></div><p>The reverse-mode chain rule, layer by layer: a sequence of transposed-Jacobian products.</p><div class="sec">§2.6</div></article>
