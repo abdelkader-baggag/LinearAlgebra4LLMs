@@ -27,7 +27,14 @@ nav ul{display:flex;flex-wrap:wrap;gap:4px 22px;list-style:none;margin:0;padding
 nav ul a{color:var(--muted);text-decoration:none}nav ul a:hover{color:var(--navy)}
 .hero{padding-top:36px;text-align:center}
 .hero-card{background:var(--soft);border:1px solid var(--border);border-radius:14px;padding:14px}
-.hero-card img{display:block;width:100%;height:auto;border-radius:8px}
+.idfig{display:block;width:100%;height:auto;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.idfig .t{font-size:44px;font-weight:700;fill:#172033;letter-spacing:-.5px}
+.idfig .au{font-size:22px;fill:#172033}.idfig .k{font-size:16px;font-weight:600}
+.idfig .lb text{font-size:19px;font-weight:600}.idfig .sb{font-size:15px;font-weight:400;fill:#5c677d}
+.idfig .i-o{fill:#c4501b}.idfig .i-b{fill:#2f5f95}.idfig .i-g{fill:#2e7d4f}
+.idfig .bx rect{fill:#eef2f8;stroke:#18314f;stroke-width:1.5}.idfig .bx text{font-size:19px;font-weight:600;fill:#172033}
+.idfig .cp{font-size:16px;font-style:italic;fill:#5c677d}
+
 .affil{font-size:13px;color:var(--muted);line-height:1.5;margin:22px 0 18px}
 .affil span{display:block}
 .btns{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
@@ -90,7 +97,37 @@ footer{margin-top:56px;padding:26px 0 40px;text-align:center;font-size:12px;colo
 <main id="top">
 <header class="hero wrap">
 <h1 class="sr">The Numerical Linear Algebra of Large Language Models — Abdelkader Baggag and Yousef Saad</h1>
-<div class="hero-card"><a href="assets/IMG_1920.png"><img src="assets/IMG_1920.png" alt="The Numerical Linear Algebra of Large Language Models by Abdelkader Baggag and Yousef Saad: a Transformer pipeline from tokens to next token, annotated with six numerical linear algebra connections — linearized attention, kernel regression, low-rank structure, representation geometry, backpropagation and the Muon optimizer."></a></div>
+<div class="hero-card"><svg class="idfig" viewBox="0 0 1200 572" role="img" aria-label="The Numerical Linear Algebra of Large Language Models, by Abdelkader Baggag and Yousef Saad. A Transformer pipeline from tokens to next token, annotated with six numerical linear algebra connections: linearized attention, kernel regression view, low-rank structure with LoRA and compression, backpropagation, representation geometry, and the Muon optimizer.">
+<defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2e7d4f"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5c677d"/></marker></defs>
+<rect x="28" y="26" width="14" height="46" rx="7" fill="#6aa4e6"/><circle cx="58" cy="32" r="8" fill="#f0a050"/><rect x="50" y="46" width="26" height="26" rx="4" fill="none" stroke="#4caf7a" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="96" y="46" class="k i-o">SURVEY · 104 pages · arXiv:2610.04631</text>
+<text x="96" y="92" class="t">The Numerical Linear Algebra</text><text x="96" y="134" class="t">of Large Language Models</text>
+<text x="96" y="172" class="au">Abdelkader Baggag · Yousef Saad</text>
+<g class="lb"><text x="300" y="228" class="i-o" text-anchor="middle">Linearized attention</text><text x="300" y="250" class="sb" text-anchor="middle">Cayley (1858)</text>
+<text x="560" y="228" class="i-b" text-anchor="middle">Kernel regression view</text><text x="560" y="250" class="sb" text-anchor="middle">Nadaraya–Watson (1964)</text>
+<text x="930" y="206" class="i-o" text-anchor="middle">Low-rank structure:</text><text x="930" y="228" class="i-o" text-anchor="middle">LoRA &amp; compression</text><text x="930" y="250" class="sb" text-anchor="middle">Eckart–Young (1936)</text></g>
+<g stroke-width="2" fill="none"><path d="M330 262L405 312" stroke="#c4501b"/><path d="M560 262L475 312" stroke="#2f5f95"/><path d="M900 262L750 312" stroke="#c4501b"/></g>
+<circle cx="405" cy="312" r="6" fill="#c4501b"/><circle cx="475" cy="312" r="6" fill="#2f5f95"/><circle cx="750" cy="312" r="6" fill="#c4501b"/>
+<rect x="318" y="284" width="500" height="102" rx="14" fill="none" stroke="#8a97ad" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="806" y="378" text-anchor="end" class="sb">Transformer block ×<tspan font-style="italic">L</tspan></text>
+<path d="M240 335H560M700 335H930" stroke="#8a97ad" stroke-width="5"/><path d="M560 335H700" stroke="#8a97ad" stroke-width="5"/>
+<text x="20" y="342" class="sb" font-size="17">tokens</text><path d="M78 335H106" stroke="#5c677d" stroke-width="2" marker-end="url(#an)"/>
+<g class="bx"><rect x="108" y="312" width="110" height="46" rx="8"/><text x="163" y="342" text-anchor="middle">Embed</text>
+<rect x="355" y="312" width="150" height="46" rx="8"/><text x="430" y="342" text-anchor="middle">Attention</text>
+<rect x="640" y="312" width="150" height="46" rx="8"/><text x="715" y="342" text-anchor="middle">MLP / MoE</text>
+<rect x="930" y="312" width="130" height="46" rx="8"/><text x="995" y="342" text-anchor="middle">Unembed</text></g>
+<path d="M1060 335H1086" stroke="#5c677d" stroke-width="2" marker-end="url(#an)"/><text x="1090" y="342" class="sb" font-size="17">next token</text>
+<circle cx="260" cy="335" r="6" fill="#c4501b"/>
+<path d="M995 360V438H163V362" fill="none" stroke="#2e7d4f" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#ag)"/>
+<text x="400" y="460" class="i-g sb">backward pass</text><text x="840" y="426" class="i-g sb">gradients</text>
+<rect x="560" y="414" width="120" height="38" rx="7" fill="#fff" stroke="#2e7d4f" stroke-width="2"/><text x="620" y="438" text-anchor="middle" class="i-g" font-weight="600" font-size="16">Optimizer step</text>
+<path d="M620 414V388" stroke="#2e7d4f" stroke-width="2.5" marker-end="url(#ag)"/><text x="632" y="404" class="i-g sb">parameter update</text>
+<g stroke-width="2" fill="none"><path d="M200 486L262 438" stroke="#2e7d4f"/><path d="M455 486L300 340" stroke="#c4501b"/><path d="M860 486L900 438" stroke="#2e7d4f"/></g>
+<circle cx="262" cy="438" r="6" fill="#2e7d4f"/><circle cx="900" cy="438" r="6" fill="#2e7d4f"/><circle cx="300" cy="338" r="0" fill="#c4501b"/>
+<g class="lb"><text x="200" y="508" class="i-g" text-anchor="middle">Backpropagation</text><text x="200" y="530" class="sb" text-anchor="middle">Linnainmaa (1970)</text>
+<text x="455" y="508" class="i-o" text-anchor="middle">Representation geometry</text><text x="455" y="530" class="sb" text-anchor="middle">Johnson–Lindenstrauss (1984)</text>
+<text x="880" y="508" class="i-g" text-anchor="middle">Muon optimizer</text><text x="880" y="530" class="sb" text-anchor="middle">Schulz (1933) · Newton–Schulz</text></g>
+<text x="600" y="556" text-anchor="middle" class="cp">Six selected numerical linear algebra connections, not an exhaustive list.</text></svg></div>
 <p class="affil"><span>Qatar Computing Research Institute (QCRI), Hamad Bin Khalifa University (HBKU)</span><span>Department of Computer Science and Engineering, University of Minnesota</span></p>
 <div class="btns">
 <a class="btn p" href="https://arxiv.org/abs/2610.04631">arXiv</a>
