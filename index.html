@@ -46,7 +46,7 @@ h3{margin:0}
 .cx h3{font-size:14px;color:var(--c);line-height:1.3}
 .cx .src{font-size:12px;color:var(--muted);margin:3px 0 10px}
 .op{font-style:normal;margin-right:.15em}
-.math{font-family:"Times New Roman",Times,serif;font-style:italic;font-size:16px;margin-bottom:10px;line-height:1.4}
+.math{font-size:15.5px;margin-bottom:10px;overflow-x:auto;overflow-y:hidden}
 .cx p{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 12px}
 .cx .sec{font-size:11.5px;color:var(--muted);margin-top:auto}
 .cap{font-size:12.5px;font-style:italic;color:var(--muted);margin-top:10px}
@@ -77,6 +77,9 @@ footer{margin-top:56px;padding:26px 0 40px;text-align:center;font-size:12px;colo
 @media(max-width:1000px){.g3{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:repeat(3,1fr)}.cover{grid-template-columns:repeat(2,1fr)}.cv,.cv.h{grid-column:auto}}
 @media(max-width:640px){.wrap{padding:0 18px}.g3,.cover,.tiles,.tiles.t3{grid-template-columns:1fr}section{padding-top:56px}.upd{flex-direction:column;gap:2px}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'$$',right:'$$',display:true}]})"></script>
 </head>
 <body>
 <nav><div class="wrap">
@@ -108,12 +111,12 @@ footer{margin-top:56px;padding:26px 0 40px;text-align:center;font-size:12px;colo
 <h2>Six Numerical Linear Algebra Connections</h2>
 <p class="lead">Six selected connections between familiar LLM mechanisms and results from numerical linear algebra and related mathematics.</p>
 <div class="grid g3">
-<article class="cx o"><h3>Linearized attention</h3><div class="src">Cayley (1858) · associativity of matrix products</div><div class="math">(<b>QK</b><sup>⊤</sup>)<b>V</b> = <b>Q</b>(<b>K</b><sup>⊤</sup><b>V</b>)</div><p>Without the softmax, regrouping one product avoids the <i>n</i> × <i>n</i> matrix: cost <i>O</i>(<i>n</i>²<i>d</i>) → <i>O</i>(<i>nd</i>²).</p><div class="sec">§4.3–4.4</div></article>
-<article class="cx b"><h3>Kernel regression view</h3><div class="src">Nadaraya–Watson (1964)</div><div class="math"><span class="op">softmax</span>(<b>QK</b><sup>⊤</sup>/√<i>d<sub>k</sub></i>)<b>V</b></div><p>Each output row is a similarity-weighted average of value vectors; the attention matrix is row-stochastic.</p><div class="sec">§2.8, §3.4</div></article>
-<article class="cx o"><h3>Low-rank structure: LoRA &amp; compression</h3><div class="src">Eckart–Young (1936)</div><div class="math"><b>W</b><sub>r</sub> = <b>U</b><sub>r</sub><b>Σ</b><sub>r</sub><b>V</b><sub>r</sub><sup>⊤</sup>, &nbsp;<b>W</b> = <b>W</b><sub>0</sub> + <b>AB</b></div><p>Truncated SVD gives the best rank-<i>r</i> approximation; LoRA learns a low-rank update with <i>r</i> ≪ <i>d</i>.</p><div class="sec">§4.1–4.2</div></article>
-<article class="cx o"><h3>Representation geometry</h3><div class="src">Johnson–Lindenstrauss (1984)</div><div class="math">‖<i>ϕ</i>(<b>u</b>) − <i>ϕ</i>(<b>v</b>)‖ ≈ ‖<b>u</b> − <b>v</b>‖</div><p>Distance preservation and near-orthogonality in high dimensions; intrinsic dimension of hidden states.</p><div class="sec">§3.14–3.15</div></article>
-<article class="cx g"><h3>Backpropagation</h3><div class="src">Linnainmaa (1970) · reverse-mode differentiation</div><div class="math"><b>J</b><sub>ℓ</sub> = ∂<b>s</b><sub>ℓ</sub>/∂<b>s</b><sub>ℓ−1</sub>, &nbsp;<b>δ</b><sub>ℓ−1</sub> = <b>J</b><sub>ℓ</sub><sup>⊤</sup><b>δ</b><sub>ℓ</sub></div><p>The reverse-mode chain rule, layer by layer: a sequence of transposed-Jacobian products.</p><div class="sec">§2.6</div></article>
-<article class="cx g"><h3>Muon optimizer</h3><div class="src">Schulz (1933) · Newton–Schulz</div><div class="math"><b>X</b><sub>k+1</sub> = <i>a</i><b>X</b><sub>k</sub> + <i>b</i>(<b>X</b><sub>k</sub><b>X</b><sub>k</sub><sup>⊤</sup>)<b>X</b><sub>k</sub> + <i>c</i>(<b>X</b><sub>k</sub><b>X</b><sub>k</sub><sup>⊤</sup>)²<b>X</b><sub>k</sub></div><p>A Newton–Schulz polynomial iteration approximates the polar factor <b>UV</b><sup>⊤</sup> of the momentum matrix.</p><div class="sec">§5.5</div></article>
+<article class="cx o"><h3>Linearized attention</h3><div class="src">Cayley (1858) · associativity of matrix products</div><div class="math">\((\mathbf{Q}\mathbf{K}^\top)\mathbf{V}=\mathbf{Q}(\mathbf{K}^\top\mathbf{V})\)</div><p>Without the softmax, regrouping one product avoids the \(n\times n\) matrix: cost \(O(n^2d)\to O(nd^2)\).</p><div class="sec">§4.3–4.4</div></article>
+<article class="cx b"><h3>Kernel regression view</h3><div class="src">Nadaraya–Watson (1964)</div><div class="math">\(\operatorname{softmax}\!\left(\mathbf{Q}\mathbf{K}^\top/\sqrt{d_k}\right)\mathbf{V}\)</div><p>Each output row is a similarity-weighted average of value vectors; the attention matrix is row-stochastic.</p><div class="sec">§2.8, §3.4</div></article>
+<article class="cx o"><h3>Low-rank structure: LoRA &amp; compression</h3><div class="src">Eckart–Young (1936)</div><div class="math">\(\mathbf{W}_r=\mathbf{U}_r\boldsymbol{\Sigma}_r\mathbf{V}_r^\top,\quad \mathbf{W}=\mathbf{W}_0+\mathbf{A}\mathbf{B}\)</div><p>Truncated SVD gives the best rank-\(r\) approximation; LoRA learns a low-rank update with \(r\ll d\).</p><div class="sec">§4.1–4.2</div></article>
+<article class="cx o"><h3>Representation geometry</h3><div class="src">Johnson–Lindenstrauss (1984)</div><div class="math">\(\|\phi(\mathbf{u})-\phi(\mathbf{v})\|\approx\|\mathbf{u}-\mathbf{v}\|\)</div><p>Distance preservation and near-orthogonality in high dimensions; intrinsic dimension of hidden states.</p><div class="sec">§3.14–3.15</div></article>
+<article class="cx g"><h3>Backpropagation</h3><div class="src">Linnainmaa (1970) · reverse-mode differentiation</div><div class="math">\(\mathbf{J}_\ell=\partial\mathbf{s}_\ell/\partial\mathbf{s}_{\ell-1},\quad \boldsymbol{\delta}_{\ell-1}=\mathbf{J}_\ell^\top\boldsymbol{\delta}_\ell\)</div><p>The reverse-mode chain rule, layer by layer: a sequence of transposed-Jacobian products.</p><div class="sec">§2.6</div></article>
+<article class="cx g"><h3>Muon optimizer</h3><div class="src">Schulz (1933) · Newton–Schulz</div><div class="math">\(\mathbf{X}_{k+1}=a\mathbf{X}_k+b(\mathbf{X}_k\mathbf{X}_k^\top)\mathbf{X}_k+c(\mathbf{X}_k\mathbf{X}_k^\top)^2\mathbf{X}_k\)</div><p>A Newton–Schulz polynomial iteration approximates the polar factor \(\mathbf{U}\mathbf{V}^\top\) of the momentum matrix.</p><div class="sec">§5.5</div></article>
 </div>
 <p class="cap">Six selected connections, not an exhaustive list.</p>
 </section>
