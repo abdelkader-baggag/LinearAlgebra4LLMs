@@ -9,96 +9,171 @@
 <meta property="og:title" content="The Numerical Linear Algebra of Large Language Models">
 <meta property="og:description" content="A survey by Abdelkader Baggag and Yousef Saad examining large language models through the lens of numerical linear algebra.">
 <meta property="og:url" content="https://abdelkader-baggag.github.io/LinearAlgebra4LLMs/">
-<meta property="og:image" content="https://abdelkader-baggag.github.io/LinearAlgebra4LLMs/assets/nla-llms-social.png">
-<meta property="og:image:width" content="2400">
-<meta property="og:image:height" content="1200">
-<meta name="twitter:image" content="https://abdelkader-baggag.github.io/LinearAlgebra4LLMs/assets/nla-llms-social.png">
+<meta property="og:image" content="https://abdelkader-baggag.github.io/LinearAlgebra4LLMs/assets/identity.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/favicon.png">
-<link rel="stylesheet" href="styles.css">
+<meta name="twitter:image" content="https://abdelkader-baggag.github.io/LinearAlgebra4LLMs/assets/identity.png">
+<style>
+:root{--text:#172033;--muted:#5c677d;--navy:#18314f;--border:#e2e7ee;--soft:#f6f8fb;--blue:#2f5f95;--orange:#c4501b;--green:#2e7d4f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;color:var(--text);background:#fff;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--navy)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);font-size:13.5px}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px 22px;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);text-decoration:none}
+nav ul{display:flex;flex-wrap:wrap;gap:4px 22px;list-style:none;margin:0;padding:0}
+nav ul a{color:var(--muted);text-decoration:none}nav ul a:hover{color:var(--navy)}
+.hero{padding-top:36px;text-align:center}
+.hero-card{background:var(--soft);border:1px solid var(--border);border-radius:14px;padding:14px}
+.hero-card img{display:block;width:100%;height:auto;border-radius:8px}
+.affil{font-size:13px;color:var(--muted);line-height:1.5;margin:22px 0 18px}
+.affil span{display:block}
+.btns{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.btn{font-size:13px;font-weight:600;padding:8px 18px;border-radius:6px;border:1px solid #cfd7e3;background:#fff;color:var(--navy);text-decoration:none}
+.btn:hover{border-color:var(--navy)}
+.btn.p{background:var(--navy);color:#fff;border-color:var(--navy)}
+section{padding-top:72px}
+h2{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin:0 0 14px}
+h3{margin:0}
+.lead{font-size:14.5px;color:var(--text);max-width:760px;margin:0 0 20px}
+.prose{max-width:760px;font-size:15px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.cx{border:1px solid var(--border);border-top:3px solid var(--c);border-radius:8px;padding:16px 18px;background:#fff;display:flex;flex-direction:column}
+.cx.o{--c:var(--orange)}.cx.b{--c:var(--blue)}.cx.g{--c:var(--green)}
+.cx h3{font-size:14px;color:var(--c);line-height:1.3}
+.cx .src{font-size:12px;color:var(--muted);margin:3px 0 10px}
+.math{font-family:"Times New Roman",Times,serif;font-style:italic;font-size:16px;margin-bottom:10px;line-height:1.4}
+.cx p{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 12px}
+.cx .sec{font-size:11.5px;color:var(--muted);margin-top:auto}
+.cap{font-size:12.5px;font-style:italic;color:var(--muted);margin-top:10px}
+.fig{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:12px}
+.fig img{display:block;width:100%;height:auto;border-radius:6px}
+.fig+.cap{text-align:center;font-style:normal}
+.cover{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cv{grid-column:span 2;background:#fbfcfe;border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.cv.h{grid-column:span 3}
+.cv h3{font-size:14px;color:var(--navy)}
+.cv .s{font-size:11.5px;color:var(--muted);margin:2px 0 10px}
+.cv ul{margin:0;padding-left:18px;font-size:12.5px;line-height:1.5;color:var(--text)}
+.cv li{margin-bottom:3px}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tiles.t3{grid-template-columns:repeat(3,1fr)}
+.tile{display:block;text-decoration:none;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:13px 16px;background:#fff}
+.tile:hover{border-color:var(--navy)}
+.tile b{display:block;font-size:13px;color:var(--navy)}
+.tile span{font-size:12px;color:var(--muted)}
+h4{font-size:15px;margin:28px 0 12px}
+.note{font-size:12.5px;font-style:italic;color:var(--muted);margin-top:16px}
+.bib{position:relative;background:var(--soft);border:1px solid var(--border);border-radius:8px;padding:18px 20px;overflow-x:auto}
+pre{margin:0;font:12.5px/1.65 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+.copy{position:absolute;top:10px;right:10px;font:600 11px inherit;font-family:inherit;padding:3px 10px;border:1px solid #cfd7e3;border-radius:4px;background:#fff;color:var(--navy);cursor:pointer}
+.upd{display:flex;gap:30px;font-size:13.5px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.upd time{color:var(--muted);font-size:12.5px;white-space:nowrap}
+footer{margin-top:56px;padding:26px 0 40px;text-align:center;font-size:12px;color:var(--muted)}
+@media(max-width:1000px){.g3{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:repeat(3,1fr)}.cover{grid-template-columns:repeat(2,1fr)}.cv,.cv.h{grid-column:auto}}
+@media(max-width:640px){.wrap{padding:0 18px}.g3,.cover,.tiles,.tiles.t3{grid-template-columns:1fr}section{padding-top:56px}.upd{flex-direction:column;gap:2px}}
+</style>
 </head>
 <body>
-<nav><div class="container">
-<a class="brand" href="#top">NLA × LLMs</a>
-<ul>
-<li><a href="#overview">Overview</a></li><li><a href="#paper">Paper</a></li><li><a href="#nla">NLA for LLMs</a></li><li><a href="#resources">Resources</a></li><li><a href="#citation">Citation</a></li><li><a href="#updates">Updates</a></li>
-</ul></div></nav>
+<nav><div class="wrap">
+<a class="brand" href="#top"><svg width="18" height="18" viewBox="0 0 18 18"><rect x="1" y="2" width="5" height="14" rx="2.5" fill="#6aa4e6"/><circle cx="10.5" cy="3.5" r="2.5" fill="#f0a050"/><rect x="8" y="8" width="8" height="8" rx="1.5" fill="none" stroke="#4caf7a" stroke-width="1.5" stroke-dasharray="2.5 2"/></svg>NLA × LLMs</a>
+<ul><li><a href="#overview">Overview</a></li><li><a href="#connections">Connections</a></li><li><a href="#technical">Technical Overview</a></li><li><a href="#paper">Contents</a></li><li><a href="#resources">Resources</a></li><li><a href="#citation">Citation</a></li><li><a href="#updates">Updates</a></li></ul>
+</div></nav>
+
 <main id="top">
-<header class="hero container">
-<h1>The Numerical Linear Algebra of Large Language Models</h1>
-<p class="authors"><a href="https://arxiv.org/a/baggag_a_1">Abdelkader Baggag</a> · <a href="https://arxiv.org/a/saad_y_1">Yousef Saad</a></p>
+<header class="hero wrap">
+<h1 class="sr">The Numerical Linear Algebra of Large Language Models — Abdelkader Baggag and Yousef Saad</h1>
+<div class="hero-card"><a href="assets/identity.png"><img src="assets/identity.png" alt="The Numerical Linear Algebra of Large Language Models by Abdelkader Baggag and Yousef Saad: a Transformer pipeline from tokens to next token, annotated with six numerical linear algebra connections — linearized attention, kernel regression, low-rank structure, representation geometry, backpropagation and the Muon optimizer."></a></div>
 <p class="affil"><span>Qatar Computing Research Institute (QCRI), Hamad Bin Khalifa University (HBKU)</span><span>Department of Computer Science and Engineering, University of Minnesota</span></p>
 <div class="btns">
-<a class="btn btn-primary" href="https://arxiv.org/abs/2610.04631">arXiv</a>
+<a class="btn p" href="https://arxiv.org/abs/2610.04631">arXiv</a>
 <a class="btn" href="https://arxiv.org/pdf/2610.04631">PDF</a>
+<a class="btn" href="https://github.com/abdelkader-baggag/LinearAlgebra4LLMs">GitHub</a>
+<a class="btn" href="https://huggingface.co/papers/2610.04631">Hugging Face</a>
 <a class="btn" href="#citation">BibTeX</a>
 </div>
-<figure>
-<a href="assets/nla-llms-overview.png"><img src="assets/nla-llms-overview.png" alt="Diagram of a Pre-LN Transformer block as matrix operators, linking kernel-regression attention, multi-head attention and RoPE, MLP and MoE, and LayerNorm with residuals to low-rank approximation, linearized attention, high-dimensional geometry and interpretability, backpropagation, and matrix-aware optimizers such as K-FAC, Shampoo and Muon."></a>
-<figcaption>A Transformer block viewed as matrix operators, with the numerical linear algebra ideas that connect to each part.</figcaption>
-</figure>
 </header>
 
-<div class="container">
-<section id="overview"><div class="prose">
+<div class="wrap">
+<section id="overview">
 <h2>Overview</h2>
-<p>The Numerical Linear Algebra of Large Language Models examines modern large language models from a numerical linear algebra perspective. The paper has two main goals: to explain the key concepts behind LLMs in a form accessible to specialists in numerical methods, and to examine the numerical linear algebra ideas that appear throughout modern LLM techniques.</p>
-<p>Starting from deep neural networks and Transformer architectures, the survey develops connections to high-dimensional representation geometry, intrinsic dimension, interpretability, low-rank and spectral structure, randomization, model compression, and matrix-based optimization. The broader perspective is that many important components of modern AI can be understood through matrices, tensors, operators, projections, and structured numerical methods.</p>
-</div></section>
+<p class="prose">This survey examines modern large language models from a numerical linear algebra perspective. It has two goals: to explain the key concepts behind LLMs in a form accessible to specialists in numerical methods, and to show where numerical linear algebra appears throughout modern LLM design, training, and analysis. It is written for both numerical analysts and machine learning researchers.</p>
+</section>
+
+<section id="connections">
+<h2>Six Numerical Linear Algebra Connections</h2>
+<p class="lead">Six selected connections between familiar LLM mechanisms and results from numerical linear algebra and related mathematics.</p>
+<div class="grid g3">
+<article class="cx o"><h3>Linearized attention</h3><div class="src">Cayley (1858) · associativity of matrix products</div><div class="math">(<b>QK</b><sup>⊤</sup>)<b>V</b> = <b>Q</b>(<b>K</b><sup>⊤</sup><b>V</b>)</div><p>Without the softmax, regrouping one product avoids the <i>n</i> × <i>n</i> matrix: cost <i>O</i>(<i>n</i>²<i>d</i>) → <i>O</i>(<i>nd</i>²).</p><div class="sec">§4.3–4.4</div></article>
+<article class="cx b"><h3>Kernel regression view</h3><div class="src">Nadaraya–Watson (1964)</div><div class="math">softmax(<b>QK</b><sup>⊤</sup>/√<i>d<sub>k</sub></i>)<b>V</b></div><p>Each output row is a similarity-weighted average of value vectors; the attention matrix is row-stochastic.</p><div class="sec">§2.8, §3.4</div></article>
+<article class="cx o"><h3>Low-rank structure: LoRA &amp; compression</h3><div class="src">Eckart–Young (1936)</div><div class="math"><b>W</b><sub>r</sub> = <b>U</b><sub>r</sub><b>Σ</b><sub>r</sub><b>V</b><sub>r</sub><sup>⊤</sup>, &nbsp;<b>W</b> = <b>W</b><sub>0</sub> + <b>AB</b></div><p>Truncated SVD gives the best rank-<i>r</i> approximation; LoRA learns a low-rank update with <i>r</i> ≪ <i>d</i>.</p><div class="sec">§4.1–4.2</div></article>
+<article class="cx o"><h3>Representation geometry</h3><div class="src">Johnson–Lindenstrauss (1984)</div><div class="math">‖<i>ϕ</i>(<b>u</b>) − <i>ϕ</i>(<b>v</b>)‖ ≈ ‖<b>u</b> − <b>v</b>‖</div><p>Distance preservation and near-orthogonality in high dimensions; intrinsic dimension of hidden states.</p><div class="sec">§3.14–3.15</div></article>
+<article class="cx g"><h3>Backpropagation</h3><div class="src">Linnainmaa (1970) · reverse-mode differentiation</div><div class="math"><b>J</b><sub>ℓ</sub> = ∂<b>s</b><sub>ℓ</sub>/∂<b>s</b><sub>ℓ−1</sub>, &nbsp;<b>δ</b><sub>ℓ−1</sub> = <b>J</b><sub>ℓ</sub><sup>⊤</sup><b>δ</b><sub>ℓ</sub></div><p>The reverse-mode chain rule, layer by layer: a sequence of transposed-Jacobian products.</p><div class="sec">§2.6</div></article>
+<article class="cx g"><h3>Muon optimizer</h3><div class="src">Schulz (1933) · Newton–Schulz</div><div class="math"><b>X</b><sub>k+1</sub> = <i>a</i><b>X</b><sub>k</sub> + <i>b</i>(<b>X</b><sub>k</sub><b>X</b><sub>k</sub><sup>⊤</sup>)<b>X</b><sub>k</sub> + <i>c</i>(<b>X</b><sub>k</sub><b>X</b><sub>k</sub><sup>⊤</sup>)²<b>X</b><sub>k</sub></div><p>A Newton–Schulz polynomial iteration approximates the polar factor <b>UV</b><sup>⊤</sup> of the momentum matrix.</p><div class="sec">§5.5</div></article>
+</div>
+<p class="cap">Six selected connections, not an exhaustive list.</p>
+</section>
+
+<section id="technical">
+<h2>Technical Overview</h2>
+<p class="lead">A decoder-only Transformer with each topic pinned to the component it acts on, tagged with its section.</p>
+<div class="fig"><a href="assets/technical-overview.png"><img src="assets/technical-overview.png" alt="Technical overview of a decoder-only Pre-LN Transformer: attention, MLP/MoE, LayerNorm and residual stream, each annotated with the matrix operation it uses, plus low-rank approximation, linearized attention, geometry and interpretability, and matrix-aware optimizers."></a></div>
+<p class="cap">Click the figure to open it at full size.</p>
+</section>
 
 <section id="paper">
 <h2>What the Paper Covers</h2>
-<p class="prose">The survey develops the subject from neural-network and Transformer foundations to representation geometry, structured approximations, and modern matrix-based optimization.</p>
-<div class="paper-grid">
-<article class="card card-1"><h3>Foundations</h3><ul><li>AI and deep-learning foundations</li><li>Multilayer perceptrons and loss functions</li><li>Stochastic optimization</li><li>Computational graphs and backpropagation</li><li>Matrix and tensor computations</li></ul></article>
-<article class="card card-2"><h3>LLMs and Transformers</h3><ul><li>Language modeling, tokens, and embeddings</li><li>Self-attention and multi-head attention</li><li>Positional representations</li><li>Feed-forward layers, normalization, and residual connections</li><li>Decoder-only LLMs and Mixture-of-Experts</li><li>Training and fine-tuning</li></ul></article>
-<article class="card card-3"><h3>Geometry, Structure &amp; Interpretability</h3><ul><li>High-dimensional representation geometry</li><li>Johnson–Lindenstrauss and near-orthogonality</li><li>Intrinsic dimension and low-dimensional structure</li><li>Interpretability through linear algebra</li><li>Scaling laws and emergent phenomena</li></ul></article>
-<article class="card card-4"><h3>Spectral &amp; Efficient Methods</h3><ul><li>Model compression</li><li>Low-rank structure and LoRA</li><li>Linearized and efficient attention</li><li>Randomization and random projections</li></ul></article>
-<article class="card card-5"><h3>Advanced Optimization</h3><ul><li>Natural gradients</li><li>Fisher and Gauss–Newton structure</li><li>K-FAC</li><li>Shampoo</li><li>Muon and Newton–Schulz iterations</li></ul></article>
-</div></section>
-
-<section id="nla">
-<h2>Numerical Linear Algebra for LLMs</h2>
-<p class="prose">Numerical linear algebra enters LLMs at several levels. Matrix and tensor operations provide the computational language of deep learning and Transformers, while numerical methods provide ways to exploit structure for training and inference. Backpropagation itself reduces to sequences of matrix operations, and low-rank approximations and structured tensor computations are repeatedly used to reduce computational and memory costs.</p>
-<div class="features">
-<div class="feature"><h3>Representations and Geometry</h3><p>LLMs operate in high-dimensional spaces, but their representations and useful parameter updates often exhibit lower-dimensional structure. This connects high-dimensional geometry, Johnson–Lindenstrauss ideas, intrinsic dimension, low-rank subspaces, and representation analysis. Linear algebra also provides explicit objects for interpretability: attention matrices, residual-stream decompositions, projections, and subspaces.</p></div>
-<div class="feature"><h3>Efficiency, Adaptation, and Optimization</h3><p>Low-rank approximations support model compression and parameter-efficient adaptation; randomized projections and structured approximations can reduce the cost of attention; and matrix-based preconditioning provides the foundation for optimization methods such as K-FAC, Shampoo, and Muon. In Muon, for example, a Newton–Schulz polynomial iteration is used to approximate a polar factor of the momentum matrix.</p></div>
-</div></section>
+<div class="cover">
+<article class="cv"><h3>Foundations</h3><div class="s">§2</div><ul><li>AI and deep-learning foundations</li><li>Multilayer perceptrons and loss functions</li><li>Stochastic optimization</li><li>Computational graphs and backpropagation</li><li>Matrix and tensor computations</li></ul></article>
+<article class="cv"><h3>LLMs and Transformers</h3><div class="s">§3.1–3.13</div><ul><li>Language modeling, tokens, and embeddings</li><li>Self-attention and multi-head attention</li><li>Positional representations</li><li>Feed-forward layers, normalization, and residual connections</li><li>Decoder-only LLMs and Mixture-of-Experts</li><li>Training dynamics</li></ul></article>
+<article class="cv"><h3>Geometry &amp; Interpretability</h3><div class="s">§3.14–3.16</div><ul><li>High-dimensional representation geometry</li><li>Johnson–Lindenstrauss and near-orthogonality</li><li>Intrinsic dimension</li><li>Interpretability through linear algebra</li><li>Scaling laws and emergent phenomena</li></ul></article>
+<article class="cv h"><h3>Spectral &amp; efficient methods</h3><div class="s">§4</div><ul><li>Model compression</li><li>Low-rank structure and LoRA</li><li>Linearized and efficient attention</li><li>Randomization and random projections</li></ul></article>
+<article class="cv h"><h3>Advanced optimization</h3><div class="s">§5</div><ul><li>Natural gradients</li><li>Fisher and Gauss–Newton structure</li><li>K-FAC</li><li>Shampoo</li><li>Muon and Newton–Schulz iterations</li></ul></article>
+</div>
+</section>
 
 <section id="resources">
 <h2>Resources</h2>
-<div class="resources">
-<a class="res" href="https://arxiv.org/abs/2610.04631"><strong>arXiv</strong><span>arXiv:2610.04631</span></a>
-<a class="res" href="https://arxiv.org/pdf/2610.04631"><strong>PDF</strong><span>Download the paper</span></a>
-<a class="res" href="#citation"><strong>BibTeX</strong><span>Jump to citation</span></a>
+<div class="tiles">
+<a class="tile" href="https://arxiv.org/abs/2610.04631"><b>arXiv</b><span>Abstract page</span></a>
+<a class="tile" href="https://arxiv.org/pdf/2610.04631"><b>PDF</b><span>Full text, 104 pages</span></a>
+<a class="tile" href="https://github.com/abdelkader-baggag/LinearAlgebra4LLMs"><b>GitHub</b><span>Project repository</span></a>
+<a class="tile" href="https://huggingface.co/papers/2610.04631"><b>Hugging Face</b><span>Paper page &amp; discussion</span></a>
+<a class="tile" href="#citation"><b>BibTeX</b><span>Citation entry</span></a>
 </div>
-<p class="note">Additional resources and updates will be added as the project develops.</p>
+<h4>Media &amp; Figures</h4>
+<div class="tiles t3">
+<a class="tile" href="assets/identity.png"><b>Identity figure</b><span>16:9 PNG · dark and SVG in the figures folder</span></a>
+<a class="tile" href="assets/technical-overview.png"><b>Technical overview figure</b><span>PNG (light and dark)</span></a>
+<a class="tile" href="assets/social.png"><b>Social image</b><span>4:5 portrait, for posts and slides</span></a>
+</div>
+<p class="note">Additional resources and updates will be added as they become available.</p>
 </section>
 
-<section id="citation"><div class="prose">
+<section id="citation">
 <h2>Citation</h2>
-<p>If you use this work, please cite:</p>
-<div class="codebox"><button id="copy-bib" type="button">Copy BibTeX</button>
-<pre id="bibtex">@article{baggag2026numerical,
+<div class="bib"><button class="copy" id="copy" type="button">Copy</button>
+<pre id="bibtex">@article{baggag2026nla,
   title   = {The Numerical Linear Algebra of Large Language Models},
   author  = {Baggag, Abdelkader and Saad, Yousef},
   journal = {arXiv preprint arXiv:2610.04631},
   year    = {2026}
 }</pre></div>
-<p class="small">arXiv: 2610.04631</p>
-</div></section>
+</section>
 
-<section id="updates"><div class="prose">
+<section id="updates">
 <h2>Updates</h2>
-<div class="update"><time>October 2026</time>Initial arXiv release of The Numerical Linear Algebra of Large Language Models — arXiv:2610.04631.</div>
-</div></section>
+<div class="upd"><time>October 2026</time><span>Version 1 posted on arXiv (<a href="https://arxiv.org/abs/2610.04631">2610.04631</a>).</span></div>
+</section>
 </div>
 </main>
-<footer><div class="container">
-<p>The Numerical Linear Algebra of Large Language Models</p>
-<p>Abdelkader Baggag · Yousef Saad</p>
-<p>Last updated: October 2026</p>
-</div></footer>
-<script src="script.js"></script>
+
+<footer><div class="wrap">Comments, corrections, and suggestions for improvement are welcome.</div></footer>
+<script>
+document.getElementById('copy').addEventListener('click',function(){var b=this;navigator.clipboard.writeText(document.getElementById('bibtex').innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})});
+</script>
 </body>
 </html>
