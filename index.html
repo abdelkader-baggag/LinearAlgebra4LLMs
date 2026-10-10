@@ -27,10 +27,21 @@ nav ul{display:flex;flex-wrap:wrap;gap:4px 22px;list-style:none;margin:0;padding
 nav ul a{color:var(--muted);text-decoration:none}nav ul a:hover{color:var(--navy)}
 .hero{padding-top:36px;text-align:center}
 .hero-card{background:var(--soft);border:1px solid var(--border);border-radius:14px;padding:14px}
+.hero-card{text-align:left;padding:20px 22px 12px}
+.hc-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}
+.glyph{flex:none;margin-top:4px}
+.kick{font-size:clamp(11px,1.6vw,15px);font-weight:600;color:var(--orange);letter-spacing:.02em}
+.hero h1{font-size:clamp(24px,4.6vw,46px);line-height:1.12;font-weight:700;letter-spacing:-.02em;margin:4px 0 8px;text-align:left}
+.hc-au a{color:inherit;text-decoration:none;border-bottom:1px solid #cfd7e3}
+.hc-au a:hover{color:var(--navy);border-color:var(--navy)}
+.hc-au{font-size:clamp(14px,2vw,20px)}
+.hc-cap{font-size:13px;font-style:italic;color:var(--muted);text-align:center;margin:10px 0 2px}
 .hero-card img{display:block;width:100%;height:auto;border-radius:8px}
 
 .affil{font-size:13px;color:var(--muted);line-height:1.5;margin:22px 0 18px}
 .affil span{display:block}
+.affil a{color:inherit;text-decoration:none;border-bottom:1px solid #cfd7e3}
+.affil a:hover{color:var(--navy);border-color:var(--navy)}
 .btns{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
 .btn{font-size:13px;font-weight:600;padding:8px 18px;border-radius:6px;border:1px solid #cfd7e3;background:#fff;color:var(--navy);text-decoration:none}
 .btn:hover{border-color:var(--navy)}
@@ -68,6 +79,11 @@ h3{margin:0}
 .tile b{display:block;font-size:13px;color:var(--navy)}
 .tile span{font-size:12px;color:var(--muted)}
 h4{font-size:15px;margin:28px 0 12px}
+.pub{border:1px solid var(--border);border-radius:8px;padding:16px 20px;background:#fff;max-width:760px}
+.pub h5{font-size:15px;line-height:1.4;margin:0 0 4px}
+.pub .pj{font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.pub p{font-size:13.5px;margin:0}
+.pub .pl{font-size:12.5px;color:var(--muted)}
 .note{font-size:12.5px;font-style:italic;color:var(--muted);margin-top:16px}
 .bib{position:relative;background:var(--soft);border:1px solid var(--border);border-radius:8px;padding:18px 20px;overflow-x:auto}
 pre{margin:0;font:12.5px/1.65 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
@@ -90,9 +106,17 @@ footer{margin-top:56px;padding:26px 0 40px;text-align:center;font-size:12px;colo
 
 <main id="top">
 <header class="hero wrap">
-<h1 class="sr">The Numerical Linear Algebra of Large Language Models — Abdelkader Baggag and Yousef Saad</h1>
-<div class="hero-card"><a href="assets/IMG_1920.png"><img src="assets/IMG_1920.png" alt="The Numerical Linear Algebra of Large Language Models by Abdelkader Baggag and Yousef Saad: a Transformer pipeline from tokens to next token, annotated with six numerical linear algebra connections — linearized attention, kernel regression, low-rank structure, representation geometry, backpropagation and the Muon optimizer."></a></div>
-<p class="affil"><span>Qatar Computing Research Institute (QCRI), Hamad Bin Khalifa University (HBKU)</span><span>Department of Computer Science and Engineering, University of Minnesota</span></p>
+<div class="hero-card">
+<div class="hc-head">
+<svg class="glyph" width="34" height="52" viewBox="0 0 34 52" aria-hidden="true"><rect x="2" y="2" width="12" height="46" rx="6" fill="#6aa4e6"/><circle cx="25" cy="8" r="7" fill="#f0a050"/><rect x="17" y="22" width="15" height="15" rx="3" fill="none" stroke="#4caf7a" stroke-width="2.2" stroke-dasharray="5 3.5"/></svg>
+<div><div class="kick">SURVEY · 104 pages · arXiv:2610.04631</div>
+<h1>The Numerical Linear Algebra<br>of Large Language Models</h1>
+<div class="hc-au"><a href="https://www.linkedin.com/in/abdelkader-baggag-94a08664" target="_blank" rel="noopener">Abdelkader Baggag</a> · Yousef Saad</div></div>
+</div>
+<a href="assets/IMG_1939.jpeg"><img src="assets/IMG_1939.jpeg" alt="A Transformer pipeline from tokens to next token (Embed, Attention, MLP/MoE, Unembed) annotated with six numerical linear algebra connections: linearized attention (Cayley, 1858), kernel regression view (Nadaraya–Watson, 1964), low-rank structure with LoRA and compression (Eckart–Young, 1936), backpropagation (Linnainmaa, 1970), representation geometry (Johnson–Lindenstrauss, 1984), and the Muon optimizer (Schulz, 1933; Newton–Schulz)."></a>
+<p class="hc-cap">Six selected numerical linear algebra connections, not an exhaustive list.</p>
+</div>
+<p class="affil"><span><a href="https://www.hbku.edu.qa/en/qcri" target="_blank" rel="noopener">Qatar Computing Research Institute (QCRI)</a>, <a href="https://www.hbku.edu.qa" target="_blank" rel="noopener">Hamad Bin Khalifa University (HBKU)</a></span><span><a href="https://cse.umn.edu" target="_blank" rel="noopener">Department of Computer Science and Engineering</a>, <a href="https://twin-cities.umn.edu" target="_blank" rel="noopener">University of Minnesota</a></span></p>
 <div class="btns">
 <a class="btn p" href="https://arxiv.org/abs/2610.04631">arXiv</a>
 <a class="btn" href="https://arxiv.org/pdf/2610.04631">PDF</a>
@@ -155,7 +179,12 @@ footer{margin-top:56px;padding:26px 0 40px;text-align:center;font-size:12px;colo
 <a class="tile" href="assets/IMG_1921.png"><b>Technical overview figure</b><span>PNG (light and dark)</span></a>
 <a class="tile" href="assets/social.png"><b>Social image</b><span>4:5 portrait, for posts and slides</span></a>
 </div>
-<p class="note">Additional resources and updates will be added as they become available.</p>
+<h4>Related Publications</h4>
+<article class="pub">
+<h5><a href="https://link.springer.com/article/10.1007/s11075-025-02218-2">Deep Learning, Transformers and Graph Neural Networks: A Linear Algebra Perspective (2025)</a></h5>
+<div class="pj">Numerical Algorithms, 100, 2095–2134 (2025).</div>
+<p>This earlier paper examines the role of linear algebra in deep learning, Transformers, and graph neural networks, providing a complementary perspective to the more detailed treatment of large language models in the present monograph.</p>
+</article>
 </section>
 
 <section id="citation">
